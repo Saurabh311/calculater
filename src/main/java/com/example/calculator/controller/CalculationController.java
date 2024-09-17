@@ -39,6 +39,9 @@ public class CalculationController {
 
     @GetMapping("/divide")
     public ResponseEntity<Double> divide(@RequestParam Double number1,@RequestParam Double number2 ){
+        if(number2 == 0){
+            return ResponseEntity.badRequest().body(Double.NaN); // handle division by zero
+        }
         double result = calculatorService.divide(number1,number2);
         return ResponseEntity.ok(result);
     }
