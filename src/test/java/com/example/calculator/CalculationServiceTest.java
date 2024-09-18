@@ -4,7 +4,12 @@ import com.example.calculator.service.CalculationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculationServiceTest {
 
@@ -75,11 +80,9 @@ class CalculationServiceTest {
     @DisplayName("Test Division by Zero Throws Exception")
     void testDivideByZero() {
         // Arrange
-        double a = 10;
-        double b = 0;
-
+        int a = 10;
+        int b = 0;
         // Act and Assert
-        assertThrows(ArithmeticException.class, () -> calculationService.divide(a, b),
-                "Division by zero should throw ArithmeticException");
+        assertThrows(ArithmeticException.class, () -> calculationService.divide(a, b));
     }
 }
