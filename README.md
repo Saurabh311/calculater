@@ -33,28 +33,28 @@ Each arithmetic operation returns a **plain text** result.
    - **Method**: `GET`
    - **URL**: `/api/calculate/add`
    - **Parameters**: `number1`, `number2` (double)
-   - **Example**: `/api/calculate/add?a=5&b=10`
+   - **Example**: `/api/calculate/add?number1=5&number2=10`
    - **Response**: `15`
 
 2. **Subtraction**
    - **Method**: `GET`
    - **URL**: `/api/calculate/subtract`
    - **Parameters**: `number1`, `number2` (double)
-   - **Example**: `/api/calculate/subtract?a=10&b=3`
+   - **Example**: `/api/calculate/subtract?number1=10&number2=3`
    - **Response**: `7`
 
 3. **Multiplication**
    - **Method**: `GET`
    - **URL**: `/api/calculate/multiply`
    - **Parameters**: `number1`, `number2` (double)
-   - **Example**: `/api/calculate/multiply?a=7&b=6`
+   - **Example**: `/api/calculate/multiply?number1=7&number2=6`
    - **Response**: `42`
 
 4. **Division**
    - **Method**: `GET`
    - **URL**: `/api/calculate/divide`
    - **Parameters**: `number1`, `number2` (double)
-   - **Example**: `/api/calculate/divide?a=20&b=5`
+   - **Example**: `/api/calculate/divide?number1=20&number2=5`
    - **Response**: `4.0`
 
    **Note**: Division by zero will return an error message in plain text:
@@ -75,20 +75,20 @@ The history of all calculations is returned in **JSON format**.
   [
     {
       "operation": "add",
-      "a": 5,
-      "b": 10,
+      "number1": 5,
+      "number2": 10,
       "result": 15
     },
     {
       "operation": "subtract",
-      "a": 10,
-      "b": 3,
+      "number1": 10,
+      "number2": 3,
       "result": 7
     },
     {
       "operation": "multiply",
-      "a": 7,
-      "b": 6,
+      "number1": 7,
+      "number2": 6,
       "result": 42
     }
   ]
