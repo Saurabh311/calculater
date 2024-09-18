@@ -36,6 +36,9 @@ public class CalculationService {
     }
 
     public double divide(double number1, double number2) {
+        if (number2 == 0) {
+            throw new ArithmeticException("Division by zero is not allowed");
+        }
         double result = number1 / number2;
         saveCalculation("DIVIDE", number1, number2, result);
         return result;

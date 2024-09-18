@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
+
+import static org.apache.logging.log4j.util.LambdaUtil.getMessage;
 
 @RestController
 @RequestMapping("/api/calculate")
@@ -37,11 +40,12 @@ public class CalculationController {
 
     @GetMapping("/divide")
     public ResponseEntity<Double> divide(@RequestParam Double number1,@RequestParam Double number2 ){
-        if(number2 == 0){
-            return ResponseEntity.badRequest().body(Double.NaN); // handle division by zero
+        try{
+            double result = calculatorService.divide(number1,number2);
+            return ResponseEntity.ok(result);
+        } catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(Double.NaN);
         }
-        double result = calculatorService.divide(number1,number2);
-        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/history")
