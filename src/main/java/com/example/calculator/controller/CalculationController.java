@@ -1,7 +1,8 @@
 package com.example.calculator.controller;
 
 import com.example.calculator.model.Calculation;
-import com.example.calculator.service.CalculatorService;
+import com.example.calculator.service.CalculationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,13 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/calculator")
+@RequestMapping("/api/calculate")
 public class CalculationController {
-    private final CalculatorService calculatorService;
-
-    public CalculationController(CalculatorService calculatorService) {
-        this.calculatorService = calculatorService;
-    }
+    @Autowired
+    private CalculationService calculatorService;
 
     @GetMapping("/add")
     public ResponseEntity<Double> add(@RequestParam Double number1,@RequestParam Double number2 ){
@@ -48,7 +46,7 @@ public class CalculationController {
 
     @GetMapping("/history")
     public ResponseEntity<List<Calculation>> getHistory(){
-        List<Calculation> calculationHistoryList = calculatorService.getAllCalculation();
+        List<Calculation> calculationHistoryList = calculatorService.getHistory();
         return ResponseEntity.ok(calculationHistoryList);
     }
 }
